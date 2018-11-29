@@ -13,7 +13,7 @@ export default class IndexPage extends React.Component {
     const post = posts[0].node;
 
     const postDate = new Date(post.frontmatter.date);
-    console.log(postDate.getTime())
+    console.log(postDate, Date.now())
     if (postDate.getTime() < Date.now()) {
       return (
         <h1>No upcoming Meetups</h1>
@@ -86,7 +86,7 @@ export const pageQuery = graphql`
           frontmatter {
             title
             templateKey
-            date(formatString: "MMMM DD, YYYY")
+            date(formatString: "MMMM DD, YYYY hh:mm A")
           }
         }
       }
